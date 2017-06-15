@@ -4,8 +4,8 @@ import {Link} from 'react-router'
 
 const dbg = debug('app:top-nav')
 
-export default function topNav(props) {
-  dbg('render: props=%o', props)
+export default function topNav({session, login, logout}) {
+  dbg('render: session=%o', session)
   return (
     <nav className="navbar navbar-default navbar-fixed-top">
       <div className="container">
@@ -23,6 +23,19 @@ export default function topNav(props) {
             <li>
               <Link to="/nonsense" activeClassName="active">Nonsense</Link>
             </li>
+          </ul>
+          <ul className="nav navbar-nav navbar-right">
+            {session.token
+              ? <li>
+                  <button onClick={logout} className="btn btn-default navbar-btn">
+                    Logout
+                  </button>
+                </li>
+              : <li>
+                  <button onClick={() => login('stuff')} className="btn btn-default navbar-btn">
+                    Login
+                  </button>
+                </li>}
           </ul>
         </div>
       </div>

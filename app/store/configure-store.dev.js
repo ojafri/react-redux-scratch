@@ -9,12 +9,13 @@ import devTools from '../dev-tools'
 
 const dbg = debug('app:store:dev')
 
-export default ({preloadedState, history}) => {
+// export default ({preloadedState, history}) => {
+export default ({history}) => {
   dbg('root-reducer=%o', rootReducer)
 
   const store = createStore(
     rootReducer,
-    preloadedState,
+    // preloadedState,
     compose(
       applyMiddleware(
         thunkMiddleware,
@@ -28,13 +29,14 @@ export default ({preloadedState, history}) => {
     )
   )
 
-  if (module.hot) {
-    // Enable Webpack hot module replacement for reducers
-    module.hot.accept('../reducers', () => {
-      const nextRootReducer = require('../reducers').default
-      store.replaceReducer(nextRootReducer)
-    })
-  }
+  // if (module.hot) {
+  //   // Enable Webpack hot module replacement for reducers
+  //   dbg('enabling webpack hot replacement...')
+  //   module.hot.accept('../reducers', () => {
+  //     const nextRootReducer = require('../reducers').default
+  //     store.replaceReducer(nextRootReducer)
+  //   })
+  // }
 
   return store
 }

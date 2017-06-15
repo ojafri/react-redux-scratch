@@ -1,3 +1,4 @@
+import 'babel-polyfill'
 import React from 'react'
 import debug from 'debug'
 import 'font-awesome/css/font-awesome.css'
