@@ -1,6 +1,13 @@
+const fs = require('fs')
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ProvidePlugin = require('webpack/lib/ProvidePlugin')
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
+const config = require('config')
+
+// https://github.com/lorenwest/node-config/wiki/Webpack-Usage
+const configJson = '../config/client.json'
+fs.writeFileSync(path.resolve(__dirname, configJson), JSON.stringify(config))
 
 module.exports = {
   entry: {
@@ -12,7 +19,8 @@ module.exports = {
   },
   resolve: {
     alias: {
-      underscore: 'lodash'
+      underscore: 'lodash',
+      config: path.resolve(__dirname, configJson)
     }
   },
   plugins: [
@@ -22,6 +30,21 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: 'app/index.html',
       inject: 'body'
+    }),
+    new FaviconsWebpackPlugin({
+      logo: './app/logo.png',
+      icons: {
+        android: false,
+        appleIcon: false,
+        appleStartup: false,
+        coast: false,
+        favicons: true,
+        firefox: false,
+        opengraph: false,
+        twitter: false,
+        yandex: false,
+        windows: false
+      }
     })
   ],
   module: {

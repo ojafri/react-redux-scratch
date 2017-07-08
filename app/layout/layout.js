@@ -1,14 +1,24 @@
 import React from 'react'
-import TopNav from './top-nav'
+import {Switch, Route} from 'react-router-dom'
+import Home from '../home/home'
+import Stuff from '../stuff/stuff'
+import Such from '../such/such'
+import Nonsense from '../nonsense/nonsense'
+import TopNavContainer from './top-nav-container'
 import Footer from './footer'
 
-export default function layout(props) {
+export default function layout() {
   return (
     <div className="layout greedy-height">
       <div id="wrap" className="wrap greedy-height">
-        <TopNav />
+        <TopNavContainer />
         <div id="main" className="container greedy-height">
-          {props.children}
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route path="/stuff" component={Stuff} />
+            <Route path="/such" component={Such} />
+            <Route path="/nonsense" component={Nonsense} />
+          </Switch>
         </div>
       </div>
       <Footer />
