@@ -1,7 +1,5 @@
 module.exports = {
-  a: {
-    b: {
-      c: 123
-    }
+  auth: {
+    returnTo: 'http://localhost:8080'
   }
 }
