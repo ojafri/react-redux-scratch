@@ -26,7 +26,7 @@ module.exports = {
     // 'unicorn/explicit-length-check': 'off',
     // 'unicorn/no-abusive-eslint-disable': 'off',
     'react/prop-types': 'off',
-    'react/forbid-component-props': 'warn',
+    'react/forbid-component-props': 'off',
     'react/jsx-no-bind': 'warn',
     'react/no-array-index-key': 'warn',
     'react/no-string-refs': 'warn',

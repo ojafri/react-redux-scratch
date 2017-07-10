@@ -12,7 +12,7 @@ export default function layout() {
     <div className="layout greedy-height">
       <div id="wrap" className="wrap greedy-height">
         <TopNavContainer />
-        <div id="main" className="container greedy-height">
+        <div id="main" className="greedy-height">
           <Switch>
             <Route exact path="/" component={Home} />
             <Route path="/stuff" component={Stuff} />

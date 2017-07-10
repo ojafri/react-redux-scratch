@@ -1,4 +1,5 @@
-html, body {
+html,
+body {
   height: 100%;
   width: 100%;
   margin: 0;
@@ -13,7 +14,8 @@ body {
   padding-top: 60px; // use variable
   font-family: 'helvetica neue', helvetica, arial, sans-serif;
 
-  .page-title, .page-title-icon {
+  .page-title,
+  .page-title-icon {
     color: $dark-grey;
     margin: 0;
   }
@@ -67,10 +69,10 @@ body {
   background-image: linear-gradient(to top, #ffffff, #f2f2f2);
   background-repeat: repeat-x;
   /*border-width: 5px;*/
-  padding-top:10px;
-  padding-bottom:0px;
-  padding-right:20px;
-  padding-left:20px;
+  padding-top: 10px;
+  padding-bottom: 0px;
+  padding-right: 20px;
+  padding-left: 20px;
 
   .social {
     float: right;
@@ -81,7 +83,8 @@ body {
       float: left;
       margin-left: 20px;
 
-      a, a:visited {
+      a,
+      a:visited {
         color: $social;
         text-decoration: none;
         font-size: 20px;
@@ -113,23 +116,23 @@ body {
 //   margin-top: -45px;
 // }
 
-
 // wrap > .container, .container-fluid {
 //     //padding-top: 65px;
 //     padding-bottom: 30px;
 // }
 
-.navbar-fixed-top, .navbar-fixed-bottom {
-    padding-top: 5px;
-    padding-bottom: 5px;
-    padding-right: 10px;
-    padding-left: 15px;
-    -webkit-border-radius: 15px;
-    -moz-border-radius: 15px;
-    border-radius: 15px;
+.navbar-fixed-top,
+.navbar-fixed-bottom {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-right: 10px;
+  padding-left: 15px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
 }
 
-#navbar li a.active {
+.menu .item a.active {
   color: $active;
 }
 
@@ -154,7 +157,9 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-h2, h3, h4 {
+h2,
+h3,
+h4 {
   font-weight: 200;
   letter-spacing: 0.05em;
 }
@@ -185,7 +190,7 @@ hr {
   display: inline-block;
 }
 
-.text-anchor-middle  {
+.text-anchor-middle {
   text-anchor: middle;
 }
 
@@ -241,4 +246,8 @@ hr {
   height: auto;
   max-height: 200px;
   overflow-x: hidden;
+}
+
+#logo {
+  height: 50px;
 }

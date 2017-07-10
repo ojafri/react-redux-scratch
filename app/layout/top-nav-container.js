@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import {withRouter} from 'react-router-dom'
 import auth from 'react-redux-auth'
-import TopNav from './top-nav'
+import TopNav from './top-nav0'
 
 const dbg = debug('app:top-nav-container')
 
