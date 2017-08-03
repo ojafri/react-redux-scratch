@@ -1,22 +1,17 @@
 import debug from 'debug'
-import _ from 'lodash'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import {withRouter} from 'react-router-dom'
-import auth from 'react-redux-auth'
-import * as layoutActions from './layout-redux'
-import TopNav from './top-nav'
+import * as actions from '../layout/layout-redux'
+import component from './such'
 
-const dbg = debug('app:top-nav-container')
-dbg('la=%o', layoutActions)
-const actions = {...auth.actions, ...layoutActions}
+const dbg = debug('app:such:index')
 
 export default withRouter(
   connect(
     state => {
       dbg('connect: state=%o', state)
       return {
-        scope: _.get(state, auth.scopePath),
         layout: state.layout
       }
     },
@@ -24,5 +19,5 @@ export default withRouter(
       dbg('connect: actions=%o', actions)
       return bindActionCreators(actions, dispatch)
     }
-  )(TopNav)
+  )(component)
 )

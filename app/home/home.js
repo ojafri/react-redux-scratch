@@ -1,54 +1,61 @@
 import debug from 'debug'
 import React, {Component} from 'react'
+import {withStyles, createStyleSheet} from 'material-ui/styles'
+import Paper from 'material-ui/Paper'
+import Typography from 'material-ui/Typography'
+// import Title from 'react-title-component'
 
 const dbg = debug('app:home')
 
-// export default function home(props) {
-//   dbg('render: props=%o', props)
-//   return (
-//     <div>
-//       <div className="jumbotron">
-//         <h1>Welcome to React Scratch</h1>
-//         <p className="lead">
-//           The premier web destination for those fans of React and Redux
-//         </p>
-//         <iframe
-//           src="https://ghbtns.com/github-btn.html?user=tony-kerz&repo=redux-scratch&type=star&count=true&size=large"
-//           frameBorder="0"
-//           scrolling="0"
-//           width="160px"
-//           height="30px"
-//         />
-//       </div>
-//     </div>
-//   )
-// }
+const styleSheet = createStyleSheet(theme => ({
+  root: {
+    ...theme.mixins.gutters({
+      paddingTop: 16,
+      paddingBottom: 16
+    })
+  },
+  stars: {
+    display: 'flex',
+    'justify-content': 'center'
+  }
+}))
 
-export default class extends Component {
+// const title = prev => `${prev} - Home`
+
+class home extends Component {
   render() {
     dbg('render: props=%o', this.props)
+    const {classes} = this.props
     return (
-      <div>
-        <div className="jumbotron">
-          <h1>Welcome to React Scratch</h1>
-          <p className="lead">The premier web destination for those fans of React and Redux</p>
+      <Paper className={classes.root} elevation={5}>
+        {/* <Title render={title} /> */}
+        <Typography align="center" type="headline" gutterBottom>
+          Welcome to React Scratch
+        </Typography>
+        <Typography align="center" type="subheading" paragraph>
+          The premier web destination for those fans of React and Redux
+        </Typography>
+        <div className={classes.stars}>
           <iframe
             src="https://ghbtns.com/github-btn.html?user=tony-kerz&repo=redux-scratch&type=star&count=true&size=large"
             frameBorder="0"
             scrolling="0"
-            width="160px"
+            width="120px"
             height="30px"
           />
         </div>
-      </div>
+      </Paper>
     )
   }
 
   componentWillMount() {
     dbg('cwm')
+    this.props.setTitle('Home')
   }
 
   componentWillUnmount() {
     dbg('cwu')
   }
 }
+
+export default withStyles(styleSheet)(home)
