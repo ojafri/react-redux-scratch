@@ -3,7 +3,8 @@ import _ from 'lodash'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import {withRouter} from 'react-router-dom'
-import auth from 'react-redux-auth'
+// import auth from 'react-redux-auth'
+import auth from '../auth'
 import * as layoutActions from './layout-redux'
 import TopNav from './top-nav'
 
@@ -17,7 +18,8 @@ export default withRouter(
       dbg('connect: state=%o', state)
       return {
         scope: _.get(state, auth.scopePath),
-        layout: state.layout
+        layout: state.layout,
+        session: state.session
       }
     },
     dispatch => {

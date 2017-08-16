@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import {withRouter} from 'react-router-dom'
 import * as actions from '../layout/layout-redux'
+
 import component from './stuff'
 
 const dbg = debug('app:stuff:index')

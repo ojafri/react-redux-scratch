@@ -15,7 +15,8 @@ import AutoIcon from 'material-ui-icons/AirportShuttle'
 // import MailIcon from 'material-ui-icons/Mail'
 // import DeleteIcon from 'material-ui-icons/Delete'
 // import ReportIcon from 'material-ui-icons/Report'
-import {NavLink} from 'react-router-dom'
+import {NavLink, withRouter} from 'react-router-dom'
+import {IfAuthorizedContainer} from '../auth'
 
 const styleSheet = createStyleSheet({
   list: {
@@ -38,14 +39,16 @@ class NavDrawer extends Component {
               <ListItemText primary="Home" />
             </ListItem>
           </NavLink>
-          <NavLink to="/stuff">
-            <ListItem button>
-              <ListItemIcon>
-                <PlaneIcon />
-              </ListItemIcon>
-              <ListItemText primary="Stuff" />
-            </ListItem>
-          </NavLink>
+          <IfAuthorizedContainer path="to">
+            <NavLink to="/stuff">
+              <ListItem button>
+                <ListItemIcon>
+                  <PlaneIcon />
+                </ListItemIcon>
+                <ListItemText primary="Stuff" />
+              </ListItem>
+            </NavLink>
+          </IfAuthorizedContainer>
           <NavLink to="/such">
             <ListItem button>
               <ListItemIcon>
@@ -72,4 +75,4 @@ NavDrawer.propTypes = {
   // classes: PropTypes.object.isRequired
 }
 
-export default withStyles(styleSheet)(NavDrawer)
+export default withRouter(withStyles(styleSheet)(NavDrawer))

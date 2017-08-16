@@ -1138,7 +1138,7 @@ babel-register@^6.24.1:
     mkdirp "^0.5.1"
     source-map-support "^0.4.2"
 
-babel-runtime@^6.18.0, babel-runtime@^6.2.0, babel-runtime@^6.20.0, babel-runtime@^6.22.0, babel-runtime@^6.23.0, babel-runtime@^6.6.1:
+babel-runtime@^6.18.0, babel-runtime@^6.2.0, babel-runtime@^6.20.0, babel-runtime@^6.22.0, babel-runtime@^6.23.0, babel-runtime@^6.25.0, babel-runtime@^6.6.1:
   version "6.25.0"
   resolved "https://registry.yarnpkg.com/babel-runtime/-/babel-runtime-6.25.0.tgz#33b98eaa5d482bb01a8d1aa6b437ad2b01aec41c"
   dependencies:
@@ -2169,6 +2169,12 @@ debug@2.6.7:
 debug@2.6.8, debug@^2.1.1, debug@^2.1.3, debug@^2.2.0, debug@^2.6.1, debug@^2.6.6, debug@^2.6.8:
   version "2.6.8"
   resolved "https://registry.yarnpkg.com/debug/-/debug-2.6.8.tgz#e731531ca2ede27d188222427da17821d68ff4fc"
+  dependencies:
+    ms "2.0.0"
+
+debug@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/debug/-/debug-3.0.0.tgz#1d2feae53349047b08b264ec41906ba17a8516e4"
   dependencies:
     ms "2.0.0"
 
@@ -3456,6 +3462,10 @@ he@1.1.x:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/he/-/he-1.1.1.tgz#93410fd21b009735151f8868c2f271f3427e23fd"
 
+hellojs@^1.15.1:
+  version "1.15.1"
+  resolved "https://registry.yarnpkg.com/hellojs/-/hellojs-1.15.1.tgz#73ea7a501854ab548cd370c006df6884d5153580"
+
 history@^4.5.1, history@^4.6.0, history@^4.6.3:
   version "4.6.3"
   resolved "https://registry.yarnpkg.com/history/-/history-4.6.3.tgz#6d723a8712c581d6bef37e8c26f4aedc6eb86967"
@@ -3523,9 +3533,9 @@ html-minifier@^3.2.3:
     relateurl "0.2.x"
     uglify-js "3.0.x"
 
-html-webpack-plugin@^2.29.0:
-  version "2.29.0"
-  resolved "https://registry.yarnpkg.com/html-webpack-plugin/-/html-webpack-plugin-2.29.0.tgz#e987f421853d3b6938c8c4c8171842e5fd17af23"
+html-webpack-plugin@^2.30.1:
+  version "2.30.1"
+  resolved "https://registry.yarnpkg.com/html-webpack-plugin/-/html-webpack-plugin-2.30.1.tgz#7f9c421b7ea91ec460f56527d78df484ee7537d5"
   dependencies:
     bluebird "^3.4.7"
     html-minifier "^3.2.3"
@@ -4592,10 +4602,10 @@ material-ui-icons@^1.0.0-alpha.19:
     recompose "^0.23.5"
 
 material-ui@next:
-  version "1.0.0-beta.2"
-  resolved "https://registry.yarnpkg.com/material-ui/-/material-ui-1.0.0-beta.2.tgz#92b36180be67153bc23b73a240ca354f741010eb"
+  version "1.0.0-beta.4"
+  resolved "https://registry.yarnpkg.com/material-ui/-/material-ui-1.0.0-beta.4.tgz#10b60839a30b90efde621c3a64c006a85204ef7e"
   dependencies:
-    babel-runtime "^6.23.0"
+    babel-runtime "^6.25.0"
     brcast "^2.0.1"
     classnames "^2.2.5"
     deepmerge "^1.5.0"
@@ -4607,9 +4617,9 @@ material-ui@next:
     lodash "^4.17.4"
     prop-types "^15.5.10"
     react-event-listener "^0.4.5"
-    react-jss "^7.0.1"
+    react-jss "^7.0.2"
     react-scrollbar-size "^2.0.0"
-    react-transition-group "^1.2.0"
+    react-transition-group "^2.2.0"
     recompose "^0.24.0"
     scroll "^2.0.0"
     warning "^3.0.0"
@@ -5950,7 +5960,7 @@ react-json-tree@^0.10.8:
     prop-types "^15.5.8"
     react-base16-styling "^0.5.1"
 
-react-jss@^7.0.1:
+react-jss@^7.0.2:
   version "7.0.2"
   resolved "https://registry.yarnpkg.com/react-jss/-/react-jss-7.0.2.tgz#1939c8c41980dadadf25204953136fbdb6bd1ade"
   dependencies:
@@ -5980,13 +5990,14 @@ react-redux-auth@^0.1.1:
     redux "^3.7.1"
     redux-actions "^2.2.1"
 
-react-redux-toastr@^7.1.0:
-  version "7.1.0"
-  resolved "https://registry.yarnpkg.com/react-redux-toastr/-/react-redux-toastr-7.1.0.tgz#e9558ad069b896e41be0094c1c5e0ef3d948b9ec"
+react-redux-toastr@^7.1.1:
+  version "7.1.1"
+  resolved "https://registry.yarnpkg.com/react-redux-toastr/-/react-redux-toastr-7.1.1.tgz#faf8c43f38344492151ec950be9cc51420887900"
   dependencies:
     classnames "^2.2.3"
     eventemitter3 "^2.0.3"
     prop-types "^15.5.7"
+    react-transition-group "1.x"
 
 react-redux@^5.0.5:
   version "5.0.5"
@@ -6033,7 +6044,7 @@ react-title-component@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/react-title-component/-/react-title-component-1.0.1.tgz#cfd51418f46e8bd42bb01c6cccab51baea0f5700"
 
-react-transition-group@^1.2.0:
+react-transition-group@1.x, react-transition-group@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/react-transition-group/-/react-transition-group-1.2.0.tgz#b51fc921b0c3835a7ef7c571c79fc82c73e9204f"
   dependencies:
@@ -6041,6 +6052,17 @@ react-transition-group@^1.2.0:
     dom-helpers "^3.2.0"
     loose-envify "^1.3.1"
     prop-types "^15.5.6"
+    warning "^3.0.0"
+
+react-transition-group@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/react-transition-group/-/react-transition-group-2.2.0.tgz#793bf8cb15bfe91b3101b24bce1c1d2891659575"
+  dependencies:
+    chain-function "^1.0.0"
+    classnames "^2.2.5"
+    dom-helpers "^3.2.0"
+    loose-envify "^1.3.1"
+    prop-types "^15.5.8"
     warning "^3.0.0"
 
 react@^15.5.4, react@^15.6.1, "react@^15.6.1 || ^16.0.0":

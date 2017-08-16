@@ -3,6 +3,7 @@ import React, {Component} from 'react'
 import {withStyles, createStyleSheet} from 'material-ui/styles'
 import Paper from 'material-ui/Paper'
 import Typography from 'material-ui/Typography'
+import {AuthContainer} from '../auth'
 
 const dbg = debug('app:stuff')
 
@@ -24,11 +25,13 @@ class home extends Component {
     dbg('render: props=%o', this.props)
     const {classes} = this.props
     return (
-      <Paper className={classes.root} elevation={5}>
-        <Typography align="center" type="headline" gutterBottom>
-          Stuff
-        </Typography>
-      </Paper>
+      <AuthContainer>
+        <Paper className={classes.root} elevation={5}>
+          <Typography align="center" type="headline" gutterBottom>
+            Stuff
+          </Typography>
+        </Paper>
+      </AuthContainer>
     )
   }
 

@@ -7,6 +7,7 @@ import Stuff from '../stuff'
 import Such from '../such'
 import Nonsense from '../nonsense'
 import TopNavContainer from './top-nav-container'
+import SnackbarContainer from './snackbar-container'
 import Footer from './footer'
 import theme from './get-theme'
 
@@ -39,7 +40,7 @@ const layout = function layout(props) {
   dbg('theme=%o', theme)
   const {classes} = props
   return (
-    <MuiThemeProvider theme={theme} className="mui-theme-provider">
+    <MuiThemeProvider theme={theme}>
       {/* <div className="layout greedy-height">
         <div id="wrap" className="wrap greedy-height">
           <TopNavContainer />
@@ -65,6 +66,7 @@ const layout = function layout(props) {
           </Switch>
         </div>
         <Footer className={classes.ends} />
+        <SnackbarContainer />
       </div>
     </MuiThemeProvider>
   )
