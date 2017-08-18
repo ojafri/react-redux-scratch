@@ -1,6 +1,7 @@
 // see: https://github.com/erikras/ducks-modular-redux
 //
 import {createAction, handleActions} from 'redux-actions'
+import {handle} from 'redux-pack'
 import debug from 'debug'
 import _ from 'lodash'
 import isAuthorized from './is-authorized'
@@ -8,14 +9,9 @@ import auth from '.'
 
 const dbg = debug('lib:auth:get-auth-redux')
 
-const LOGIN_BEGIN = 'auth/login-begin'
 const LOGIN = 'auth/login'
-const LOGOUT_BEGIN = 'auth/logout-begin'
 const LOGOUT = 'auth/logout'
 const RESOLVE_ROUTE = 'auth/resolve-route'
-
-const loginBegin = createAction(LOGIN_BEGIN)
-const logoutBegin = createAction(LOGOUT_BEGIN)
 
 function parseScope({scope, scopeDelimiter}) {
   dbg('parse-scope: args=%o', arguments[0])
@@ -31,53 +27,51 @@ export default function({postAuthLocation, impl, onNotAuthorized}) {
   return {
     scopePath,
     actions: {
-      login: ({history, target} = {}) => {
+      login: ({history, target}) => {
         dbg('login-action: history=%o, target=%o', history, target)
-        return async (dispatch, getState) => {
-          dbg('login-thunk')
-          dispatch(loginBegin(target))
-          dbg('login-thunk: before await impl.login()...')
-          const loginResult = await impl.login()
-          // const loginResult = impl.login()
-          dbg('login-thunk: after await impl.login(), login-result=%o', loginResult)
-          // await loginResult
-          const {decoded} = loginResult
-          let _target
-          if (target) {
-            dbg('specified target=%o', target)
-            _target = target
-          } else {
-            if (_.isFunction(postAuthLocation)) {
-              _target = postAuthLocation({token: decoded})
-            } else if (_.isString(postAuthLocation)) {
-              _target = postAuthLocation
-            } else {
-              throw new TypeError(`unexpected type for post-auth-location=${postAuthLocation}`)
+        return {
+          type: LOGIN,
+          promise: impl.login(),
+          meta: {
+            onSuccess: result => {
+              dbg('login: on-success: result=%o', result)
+              const {decoded} = result
+              let _target
+              if (target) {
+                _target = target
+              } else {
+                if (_.isFunction(postAuthLocation)) {
+                  _target = postAuthLocation({token: decoded})
+                } else if (_.isString(postAuthLocation)) {
+                  _target = postAuthLocation
+                } else {
+                  throw new TypeError(`unexpected type for post-auth-location=${postAuthLocation}`)
+                }
+              }
+              const {location} = history
+              dbg(
+                'login: on-success: decoded=%o, location=%o, target=%o',
+                decoded,
+                location,
+                _target
+              )
+              if (_target != location) {
+                history.push(_target)
+              }
             }
-          }
-          const {location} = history
-          dbg('post-login: decoded=%o, location=%o, target=%o', decoded, location, _target)
-          // apply authentication scope to resolved-routes...
-          const scope = parseScope({scope: decoded[scopeClaim], scopeDelimiter})
-          const {rules} = auth
-          let {resolvedRoutes} = getState().session
-          resolvedRoutes = _.transform(resolvedRoutes, (result, val, key) => {
-            result[key] = isAuthorized({path: key, rules, scope, resolvedRoutes})
-          })
-          dbg('resolved-routes=%o', resolvedRoutes)
-          dispatch(createAction(LOGIN)({token: loginResult, resolvedRoutes}))
-          if (_target != location) {
-            history.push(_target)
           }
         }
       },
       logout: target => {
         dbg('logout-action: target=%o', target)
-        return async dispatch => {
-          dbg('logout-thunk: target=%o', target)
-          dispatch(logoutBegin(target))
-          await impl.logout({dispatch, action: LOGOUT})
-          dispatch(createAction(LOGOUT)())
+        return {
+          type: LOGOUT,
+          promise: impl.logout(),
+          meta: {
+            onSuccess: () => {
+              dbg('logout: on-success')
+            }
+          }
         }
       },
       resolveRoute: path => {
@@ -94,49 +88,55 @@ export default function({postAuthLocation, impl, onNotAuthorized}) {
       },
       onNotAuthorized: path => {
         dbg('on-not-authorized-action: path=%o', path)
-        return (dispatch, getState) => {
+        return dispatch => {
           dbg('on-not-authorized-thunk: path=%o', path)
-          dbg('on-not-authorized-thunk: dispatch=%o, getState=%o', dispatch, getState)
           onNotAuthorized({path, dispatch})
         }
       }
     },
     reducer: handleActions(
       {
-        [LOGIN_BEGIN]: (state, action) => {
-          dbg('reducer: login-begin: state=%o, action=%o', state, action)
-          return {
-            ...state,
-            active: true,
-            target: action.payload
-          }
-        },
-        [LOGIN]: (state, action) => {
-          dbg('reducer: login: state=%o, action=%o', state, action)
-          return {
-            ...state,
-            ...action.payload,
-            active: false,
-            target: null
-          }
-        },
-        [LOGOUT_BEGIN]: (state, action) => {
-          dbg('reducer: logout-begin: state=%o, action=%o', state, action)
-          return {
-            ...state,
-            active: true,
-            target: action.payload
-          }
-        },
-        [LOGOUT]: (state, action) => {
-          dbg('reducer: logout: state=%o, action=%o', state, action)
-          return {
-            ...state,
-            active: false,
-            token: null,
-            resolvedRoutes: {}
-          }
-        },
+        [LOGIN]: (state, action) =>
+          handle(state, action, {
+            start: () => ({
+              ...state,
+              active: true,
+              target: action.payload
+            }),
+            success: () => {
+              dbg('login-success: state=%o, action=%o', state, action)
+              const token = action.payload
+              const {decoded} = token
+              const scope = parseScope({scope: decoded[scopeClaim], scopeDelimiter})
+              const {rules} = auth
+              let {resolvedRoutes} = state
+              resolvedRoutes = _.transform(resolvedRoutes, (result, val, key) => {
+                result[key] = isAuthorized({path: key, rules, scope, resolvedRoutes})
+              })
+              dbg('resolved-routes=%o', resolvedRoutes)
+              return {
+                ...state,
+                token,
+                resolvedRoutes,
+                active: false,
+                target: null
+              }
+            }
+          }),
+        [LOGOUT]: (state, action) =>
+          handle(state, action, {
+            start: _state => ({
+              ..._state,
+              active: true,
+              target: action.payload
+            }),
+            success: _state => ({
+              ..._state,
+              active: false,
+              token: null,
+              resolvedRoutes: {}
+            })
+          }),
         [RESOLVE_ROUTE]: (state, action) => {
           dbg('reducer: resolve-route: state=%o, action=%o', state, action)
           return {
