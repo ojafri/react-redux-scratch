@@ -5974,9 +5974,9 @@ react-pure-render@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/react-pure-render/-/react-pure-render-1.0.2.tgz#9d8a928c7f2c37513c2d064e57b3e3c356e9fabb"
 
-react-redux-auth@^0.1.1:
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/react-redux-auth/-/react-redux-auth-0.1.1.tgz#0c03cbcb0d416d20860814deaa8b6feb8348f619"
+react-redux-auth@^0.2.2:
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/react-redux-auth/-/react-redux-auth-0.2.2.tgz#12219c0291485fa570910d80c2712226b4349fc0"
   dependencies:
     auth0-lock "^10.18.0"
     debug "^2.6.1"
