@@ -16,7 +16,8 @@ import AutoIcon from 'material-ui-icons/AirportShuttle'
 // import DeleteIcon from 'material-ui-icons/Delete'
 // import ReportIcon from 'material-ui-icons/Report'
 import {NavLink, withRouter} from 'react-router-dom'
-import {IfAuthorizedContainer} from '../auth'
+// import {IfAuthorizedContainer} from '../auth'
+import {IfAuthorizedContainer} from 'react-redux-auth'
 
 const styleSheet = createStyleSheet({
   list: {

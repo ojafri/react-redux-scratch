@@ -3,7 +3,8 @@ import React, {Component} from 'react'
 import {withStyles, createStyleSheet} from 'material-ui/styles'
 import Paper from 'material-ui/Paper'
 import Typography from 'material-ui/Typography'
-import {AuthContainer} from '../auth'
+// import {AuthContainer} from '../auth'
+import {AuthContainer} from 'react-redux-auth'
 
 const dbg = debug('app:stuff')
 
