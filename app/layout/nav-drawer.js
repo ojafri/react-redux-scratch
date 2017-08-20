@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 // import PropTypes from 'prop-types'
-import {withStyles, createStyleSheet} from 'material-ui/styles'
+import {withStyles} from 'material-ui/styles'
 import Drawer from 'material-ui/Drawer'
 import List, {ListItem, ListItemIcon, ListItemText} from 'material-ui/List'
 // import {MenuItem} from 'material-ui/Menu'
@@ -19,12 +19,12 @@ import {NavLink, withRouter} from 'react-router-dom'
 // import {IfAuthorizedContainer} from '../auth'
 import {IfAuthorizedContainer} from 'react-redux-auth'
 
-const styleSheet = createStyleSheet({
+const styles = {
   list: {
     width: 250,
     flex: 'initial'
   }
-})
+}
 
 class NavDrawer extends Component {
   render() {
@@ -76,4 +76,4 @@ NavDrawer.propTypes = {
   // classes: PropTypes.object.isRequired
 }
 
-export default withRouter(withStyles(styleSheet)(NavDrawer))
+export default withRouter(withStyles(styles)(NavDrawer))

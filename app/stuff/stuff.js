@@ -1,6 +1,6 @@
 import debug from 'debug'
 import React, {Component} from 'react'
-import {withStyles, createStyleSheet} from 'material-ui/styles'
+import {withStyles} from 'material-ui/styles'
 import Paper from 'material-ui/Paper'
 import Typography from 'material-ui/Typography'
 // import {AuthContainer} from '../auth'
@@ -8,7 +8,7 @@ import {AuthContainer} from 'react-redux-auth'
 
 const dbg = debug('app:stuff')
 
-const styleSheet = createStyleSheet(theme => ({
+const styles = theme => ({
   root: {
     ...theme.mixins.gutters({
       paddingTop: 16,
@@ -19,7 +19,7 @@ const styleSheet = createStyleSheet(theme => ({
     display: 'flex',
     'justify-content': 'center'
   }
-}))
+})
 
 class home extends Component {
   render() {
@@ -46,4 +46,4 @@ class home extends Component {
   }
 }
 
-export default withStyles(styleSheet)(home)
+export default withStyles(styles)(home)

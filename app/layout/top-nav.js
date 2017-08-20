@@ -8,21 +8,22 @@ import Typography from 'material-ui/Typography'
 import IconButton from 'material-ui/IconButton'
 import Button from 'material-ui/Button'
 import MenuIcon from 'material-ui-icons/Menu'
-import {withStyles, createStyleSheet, withTheme} from 'material-ui/styles'
-import logo from '../react-logo-2.png'
+// import {withStyles, withTheme} from 'material-ui/styles'
+import {withStyles} from 'material-ui/styles'
+import logo from '../react-logo.png'
 import AppBarImage from '../shared/mui/app-bar-image'
 import NavDrawer from './nav-drawer'
 
 const dbg = debug('app:top-nav')
 
-const styleSheet = createStyleSheet({
+const styles = {
   title: {
     paddingRight: 20
   },
   login: {
     marginLeft: 'auto'
   }
-})
+}
 
 function toolBarRef(ref) {
   dbg('tool-bar-ref=%o', ref)
@@ -82,4 +83,5 @@ class topNav extends Component {
   }
 }
 
-export default withTheme(withStyles(styleSheet)(topNav))
+// export default withTheme(withStyles(styles)(topNav))
+export default withStyles(styles)(topNav)

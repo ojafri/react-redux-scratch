@@ -1,6 +1,6 @@
-import React from 'react'
+import React, {Component} from 'react'
 import {Switch, Route} from 'react-router-dom'
-import {MuiThemeProvider, withStyles, createStyleSheet} from 'material-ui/styles'
+import {withStyles} from 'material-ui/styles'
 import debug from 'debug'
 import Home from '../home'
 import Stuff from '../stuff'
@@ -9,15 +9,22 @@ import Nonsense from '../nonsense'
 import TopNavContainer from './top-nav-container'
 import SnackbarContainer from './snackbar-container'
 import Footer from './footer'
-import theme from './get-theme'
 
 const dbg = debug('app:layout')
 
-const styleSheet = createStyleSheet({
+const styles = theme => ({
   container: {
     display: 'flex',
     'flex-direction': 'column',
-    height: '100%'
+    height: '100%',
+    '@global': {
+      a: {
+        textDecoration: 'none',
+        '&:visited': {
+          color: theme.palette.primary[500]
+        }
+      }
+    }
   },
   middle: {
     flex: 'auto',
@@ -36,25 +43,11 @@ const styleSheet = createStyleSheet({
   }
 })
 
-const layout = function layout(props) {
-  dbg('theme=%o', theme)
-  const {classes} = props
-  return (
-    <MuiThemeProvider theme={theme}>
-      {/* <div className="layout greedy-height">
-        <div id="wrap" className="wrap greedy-height">
-          <TopNavContainer />
-          <div id="main" className="container greedy-height">
-            <Switch>
-              <Route exact path="/" component={Home} />
-              <Route path="/stuff" component={Stuff} />
-              <Route path="/such" component={Such} />
-              <Route path="/nonsense" component={Nonsense} />
-            </Switch>
-          </div>
-        </div>
-        <Footer />
-      </div> */}
+class layout extends Component {
+  render() {
+    dbg('props=%o', this.props)
+    const {classes} = this.props
+    return (
       <div className={classes.container}>
         <TopNavContainer className={classes.ends} />
         <div className={classes.middle}>
@@ -68,8 +61,8 @@ const layout = function layout(props) {
         <Footer className={classes.ends} />
         <SnackbarContainer />
       </div>
-    </MuiThemeProvider>
-  )
+    )
+  }
 }
 
-export default withStyles(styleSheet)(layout)
+export default withStyles(styles)(layout)

@@ -3,7 +3,8 @@ import React from 'react'
 import {Router, Route} from 'react-router-dom'
 import getHistory from 'history/createHashHistory'
 import DevTools from '../dev-tools'
-import Layout from '../layout/layout'
+// import Layout from '../layout/layout'
+import Layout from '../layout'
 
 let dbg = debug('app:router:dev')
 
