@@ -65,8 +65,8 @@ export default handleActions(
     isDrawerOpen: false,
     title: '',
     snackbar: {
-      open: false
-      // message: 'welcome...'
+      open: false,
+      message: null
     }
   }
 )

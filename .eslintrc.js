@@ -24,7 +24,7 @@ module.exports = {
     // 'unicorn/prefer-starts-ends-with': 'off',
     // 'unicorn/prefer-type-error': 'off',
     // 'unicorn/explicit-length-check': 'off',
-    // 'unicorn/no-abusive-eslint-disable': 'off',
+    'unicorn/no-abusive-eslint-disable': 'off',
     'react/prop-types': 'off',
     'react/forbid-component-props': 'off',
     'react/jsx-no-bind': 'warn',

@@ -1,8 +1,8 @@
 import debug from 'debug'
 import {combineReducers} from 'redux'
 import {reducer as form} from 'redux-form'
-import auth from 'react-redux-auth'
-// import auth from './auth'
+// import auth from 'react-redux-auth'
+import auth from './auth'
 import layout from './layout/layout-redux'
 import peopleRedux from './people/redux'
 
