@@ -27,20 +27,11 @@ class home extends Component {
       <Paper className={classes.root} elevation={5}>
         {/* <Title render={title} /> */}
         <Typography align="center" type="headline" gutterBottom>
-          Welcome to React Scratch
+          Welcome to Universal Data Exchange
         </Typography>
         <Typography align="center" type="subheading" paragraph>
-          The premier web destination for those fans of React and Redux
+          Enabling Data Interchange with our Valued Partners
         </Typography>
-        <div className={classes.stars}>
-          <iframe
-            src="https://ghbtns.com/github-btn.html?user=tony-kerz&repo=redux-scratch&type=star&count=true&size=large"
-            frameBorder="0"
-            scrolling="0"
-            width="120px"
-            height="30px"
-          />
-        </div>
       </Paper>
     )
   }

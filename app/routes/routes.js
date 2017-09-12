@@ -3,8 +3,10 @@ import React, {Component} from 'react'
 import {withStyles} from 'material-ui/styles'
 import Paper from 'material-ui/Paper'
 import Typography from 'material-ui/Typography'
+// import {AuthContainer} from '../auth'
+// import {AuthContainer} from 'react-redux-auth'
 
-const dbg = debug('app:nonsense')
+const dbg = debug('app:routes')
 
 const styles = theme => ({
   root: {
@@ -19,14 +21,14 @@ const styles = theme => ({
   }
 })
 
-class nonsense extends Component {
+class routes extends Component {
   render() {
     dbg('render: props=%o', this.props)
     const {classes} = this.props
     return (
       <Paper className={classes.root} elevation={5}>
         <Typography align="center" type="headline" gutterBottom>
-          Nonsense
+          Routes
         </Typography>
       </Paper>
     )
@@ -34,7 +36,7 @@ class nonsense extends Component {
 
   componentWillMount() {
     dbg('cwm')
-    this.props.setTitle('Nonsense')
+    this.props.setTitle('Routes')
   }
 
   componentWillUnmount() {
@@ -42,4 +44,4 @@ class nonsense extends Component {
   }
 }
 
-export default withStyles(styles)(nonsense)
+export default withStyles(styles)(routes)

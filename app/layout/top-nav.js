@@ -10,15 +10,16 @@ import Button from 'material-ui/Button'
 import MenuIcon from 'material-ui-icons/Menu'
 // import {withStyles, withTheme} from 'material-ui/styles'
 import {withStyles} from 'material-ui/styles'
-import logo from '../react-logo.png'
-import AppBarImage from '../shared/mui/app-bar-image'
+// import logo from '../aetna-logo-green.png'
+// import AppBarImage from '../shared/mui/app-bar-image'
 import NavDrawer from './nav-drawer'
 
 const dbg = debug('app:top-nav')
 
 const styles = {
   title: {
-    paddingRight: 20
+    paddingLeft: 10,
+    color: 'white'
   },
   login: {
     marginLeft: 'auto'
@@ -47,11 +48,11 @@ class topNav extends Component {
             <IconButton color="contrast" aria-label="Menu" onClick={toggleDrawer}>
               <MenuIcon />
             </IconButton>
-            <AppBarImage logo={logo} />
+            {/* <AppBarImage logo={logo} />
             <Typography type="title" className={classes.title}>
-              React Scratch
-            </Typography>
-            <Typography type="subheading" color="accent">
+              Universal Data Exchange
+            </Typography> */}
+            <Typography type="title" className={classes.title}>
               {layout.title}
             </Typography>
             <div className={classes.login}>

@@ -3,9 +3,10 @@ import {Switch, Route} from 'react-router-dom'
 import {withStyles} from 'material-ui/styles'
 import debug from 'debug'
 import Home from '../home'
-import Stuff from '../stuff'
-import Such from '../such'
-import Nonsense from '../nonsense'
+import Partners from '../partners'
+import Users from '../users'
+import Endpoints from '../endpoints'
+import Routes from '../routes'
 import TopNavContainer from './top-nav-container'
 import SnackbarContainer from './snackbar-container'
 import Footer from './footer'
@@ -53,9 +54,10 @@ class layout extends Component {
         <div className={classes.middle}>
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route path="/stuff" component={Stuff} />
-            <Route path="/such" component={Such} />
-            <Route path="/nonsense" component={Nonsense} />
+            <Route path="/partners" component={Partners} />
+            <Route path="/users" component={Users} />
+            <Route path="/endpoints" component={Endpoints} />
+            <Route path="/routes" component={Routes} />
           </Switch>
         </div>
         <Footer className={classes.ends} />

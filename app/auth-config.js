@@ -20,19 +20,30 @@ configure({
     getProvider
   }),
   // roles can be a string, an array (or'd), or a function for custom
+  // rules: [
+  //   {
+  //     path: '/stuff',
+  //     roles: roles => {
+  //       return roles.includes('admin')
+  //     }
+  //   },
+  //   {path: '/nonsense', roles: 'nonsense'}
+  // ],
+  // postAuthLocation: ({token}) => {
+  //   // can customize with function (e.g. based on roles)
+  //   dbg('post-auth-location: token=%o', token)
+  //   return 'stuff'
+  // },
   rules: [
-    {
-      path: '/stuff',
-      roles: roles => {
-        return roles.includes('admin')
-      }
-    },
-    {path: '/nonsense', roles: 'nonsense'}
+    // {path: '/partners', roles: 'admin'},
+    // {path: '/users', roles: 'admin'} // ,
+    // {path: '/endpoints', roles: 'admin'},
+    // {path: '/routes', roles: 'admin'}
   ],
   postAuthLocation: ({token}) => {
     // can customize with function (e.g. based on roles)
     dbg('post-auth-location: token=%o', token)
-    return 'stuff'
+    return '/'
   },
   notAuthorizedLocation: '/',
   onNotAuthorized: ({path, dispatch}) => {

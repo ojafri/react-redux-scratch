@@ -26,7 +26,7 @@ class such extends Component {
     return (
       <Paper className={classes.root} elevation={5}>
         <Typography align="center" type="headline" gutterBottom>
-          Such
+          Endpoints
         </Typography>
       </Paper>
     )
@@ -34,7 +34,7 @@ class such extends Component {
 
   componentWillMount() {
     dbg('cwm')
-    this.props.setTitle('Such')
+    this.props.setTitle('Endpoints')
   }
 
   componentWillUnmount() {

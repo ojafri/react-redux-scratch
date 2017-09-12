@@ -6,7 +6,7 @@ import Typography from 'material-ui/Typography'
 // import {AuthContainer} from '../auth'
 import {AuthContainer} from 'react-redux-auth'
 
-const dbg = debug('app:stuff')
+const dbg = debug('app:users')
 
 const styles = theme => ({
   root: {
@@ -21,7 +21,7 @@ const styles = theme => ({
   }
 })
 
-class home extends Component {
+class users extends Component {
   render() {
     dbg('render: props=%o', this.props)
     const {classes} = this.props
@@ -29,7 +29,7 @@ class home extends Component {
       <AuthContainer>
         <Paper className={classes.root} elevation={5}>
           <Typography align="center" type="headline" gutterBottom>
-            Stuff
+            Users
           </Typography>
         </Paper>
       </AuthContainer>
@@ -38,7 +38,7 @@ class home extends Component {
 
   componentWillMount() {
     dbg('cwm')
-    this.props.setTitle('Stuff')
+    this.props.setTitle('Users')
   }
 
   componentWillUnmount() {
@@ -46,4 +46,4 @@ class home extends Component {
   }
 }
 
-export default withStyles(styles)(home)
+export default withStyles(styles)(users)

@@ -4,9 +4,9 @@ import {bindActionCreators} from 'redux'
 import {withRouter} from 'react-router-dom'
 import * as actions from '../layout/layout-redux'
 
-import component from './stuff'
+import component from './routes'
 
-const dbg = debug('app:stuff:index')
+const dbg = debug('app:routes:index')
 
 export default withRouter(
   connect(

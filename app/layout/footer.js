@@ -3,63 +3,78 @@ import debug from 'debug'
 import {withStyles} from 'material-ui/styles'
 import Paper from 'material-ui/Paper'
 import Typography from 'material-ui/Typography'
+import aetnaLogo from '../aetna-logo-green.png'
+import phoenixLogo from '../phoenix-logo.png'
 
 const dbg = debug('app:footer')
+
+const height = 30
 
 const styles = theme => {
   const {social, grey} = theme.scratch.colors
   return {
+    // left/center/right spacing: https://stackoverflow.com/a/43211815/2371903
     root: {
-      ...theme.mixins.gutters({
-        paddingTop: 16,
-        paddingBottom: 16
-      }),
       display: 'flex',
-      'justify-content': 'space-between'
+      alignItems: 'center',
+      zIndex: 10,
+      padding: [10, 20, 10, 20],
+      '& > *': {
+        display: 'flex',
+        flex: 1
+      }
+    },
+    logos: {
+      '& img': {
+        height
+      },
+      justifyContent: 'flex-start'
     },
     text: {
-      paddingTop: 5
+      justifyContent: 'center'
     },
     social: {
       '& a': {
         padding: [0, 5, 0, 5],
         color: social,
-        'text-decoration': 'none',
-        'font-size': 20,
+        textDecoration: 'none',
+        fontSize: 20,
         '&:visited': {
           extend: '&',
           '&:hover': {
             color: grey
           }
         }
-      }
+      },
+      justifyContent: 'flex-end'
     }
   }
 }
 
-//function footer(props) {
 class footer extends Component {
   render() {
     dbg('render: props=%o', this.props)
     const {classes} = this.props
     return (
       <Paper id="footer" className={classes.root} elevation={5}>
-        <Typography type="body1" component="p" className={classes.text}>
-          Powered by <a href="https://facebook.github.io/react/">React</a> and{' '}
-          <a href="http://redux.js.org/">Redux</a>
+        <div className={classes.logos}>
+          <a href="http://www.aetna.com">
+            <img src={aetnaLogo} />
+          </a>
+          <img src={phoenixLogo} />
+        </div>
+        <Typography type="subheading" className={classes.text}>
+          Universal Data Exchange
         </Typography>
         <div className={classes.social}>
-          <a href="https://plus.google.com/u/2/+TonyKerz">
-            <i className="fa fa-google-plus-square" />
+          <a href="http://www.facebook.com/aetna">
+            <i className="fa fa-facebook-square" />
           </a>
-          <a href="http://twitter.com/tony_kerz">
+          <a href="http://twitter.com/aetna">
             <i className="fa fa-twitter-square" />
           </a>
-          <a href="http://linkedin.com/in/tkerz">
+          <a href="http://linkedin.com/company/aetna">
             <i className="fa fa-linkedin-square" />
-          </a>
-          <a href="http://tony-kerz.github.io">
-            <i className="fa fa-github-square" />
           </a>
         </div>
       </Paper>
