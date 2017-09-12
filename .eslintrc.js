@@ -30,6 +30,7 @@ module.exports = {
     'react/jsx-no-bind': 'warn',
     'react/no-array-index-key': 'warn',
     'react/no-string-refs': 'warn',
+    'react/require-default-props': 'off',
     'import/no-unresolved': 'off',
     'import/no-unassigned-import': 'off',
     'import/prefer-default-export': 'off'

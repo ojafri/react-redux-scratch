@@ -10,22 +10,19 @@ const styles = theme => {
   const {social, grey} = theme.scratch.colors
   return {
     root: {
-      ...theme.mixins.gutters({
-        paddingTop: 16,
-        paddingBottom: 16
-      }),
       display: 'flex',
-      'justify-content': 'space-between'
-    },
-    text: {
-      paddingTop: 5
+      flex: 'none',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      zIndex: 10,
+      padding: [10, 20, 10, 20]
     },
     social: {
       '& a': {
         padding: [0, 5, 0, 5],
         color: social,
-        'text-decoration': 'none',
-        'font-size': 20,
+        textDecoration: 'none',
+        fontSize: 20,
         '&:visited': {
           extend: '&',
           '&:hover': {
@@ -37,7 +34,6 @@ const styles = theme => {
   }
 }
 
-//function footer(props) {
 class footer extends Component {
   render() {
     dbg('render: props=%o', this.props)

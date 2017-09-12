@@ -3,9 +3,9 @@ var DefinePlugin = require('webpack/lib/DefinePlugin')
 var commonConfig = require('./webpack.common.config')
 
 const config = _.extend(commonConfig, {
-  devtool: 'eval', // fastest, least-helpful
+  // devtool: 'eval', // fastest, least-helpful
   //devtool: 'cheap-module-eval-source-map', // medium-fast, medium-helpful
-  //devtool: 'source-map', // slowest, most-helpful
+  devtool: 'source-map', // slowest, most-helpful
   // debug: true,
   devServer: {
     proxy: {
