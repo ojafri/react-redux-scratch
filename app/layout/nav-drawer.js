@@ -9,6 +9,7 @@ import HomeIcon from 'material-ui-icons/Home'
 import PlaneIcon from 'material-ui-icons/Flight'
 import TrainIcon from 'material-ui-icons/Train'
 import AutoIcon from 'material-ui-icons/AirportShuttle'
+import PeopleIcon from 'material-ui-icons/Group'
 // import DraftsIcon from 'material-ui-icons/Drafts'
 // import StarIcon from 'material-ui-icons/Star'
 // import SendIcon from 'material-ui-icons/Send'
@@ -64,6 +65,14 @@ class NavDrawer extends Component {
                 <AutoIcon />
               </ListItemIcon>
               <ListItemText primary="Nonsense" />
+            </ListItem>
+          </NavLink>
+          <NavLink to="/people">
+            <ListItem button>
+              <ListItemIcon>
+                <PeopleIcon />
+              </ListItemIcon>
+              <ListItemText primary="People" />
             </ListItem>
           </NavLink>
         </List>

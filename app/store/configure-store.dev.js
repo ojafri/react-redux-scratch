@@ -2,6 +2,7 @@ import debug from 'debug'
 import {createStore, applyMiddleware, compose} from 'redux'
 import thunkMiddleware from 'redux-thunk'
 import promiseMiddleware from 'redux-promise'
+import {middleware as reduxPackMiddleware} from 'redux-pack'
 import {createLogger} from 'redux-logger'
 import rootReducer from '../reducers'
 import devTools from '../dev-tools'
@@ -17,6 +18,7 @@ export default () => {
       applyMiddleware(
         thunkMiddleware,
         promiseMiddleware,
+        reduxPackMiddleware,
         createLogger({
           collapsed: true
         })

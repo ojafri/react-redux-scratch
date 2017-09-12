@@ -6,6 +6,7 @@ import Home from '../home'
 import Stuff from '../stuff'
 import Such from '../such'
 import Nonsense from '../nonsense'
+import People from '../people'
 import TopNavContainer from './top-nav-container'
 import SnackbarContainer from './snackbar-container'
 import Footer from './footer'
@@ -56,6 +57,7 @@ class layout extends Component {
             <Route path="/stuff" component={Stuff} />
             <Route path="/such" component={Such} />
             <Route path="/nonsense" component={Nonsense} />
+            <Route path="/people" component={People} />
           </Switch>
         </div>
         <Footer className={classes.ends} />

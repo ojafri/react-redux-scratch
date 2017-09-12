@@ -1,4 +1,6 @@
-import {createMuiTheme, createPalette} from 'material-ui/styles'
+// import {createMuiTheme, createPalette} from 'material-ui/styles'
+import {createMuiTheme} from 'material-ui/styles'
+import createPalette from 'material-ui/styles/createPalette'
 import blue from 'material-ui/colors/blue'
 // import purple from 'material-ui/colors/purple'
 // import green from 'material-ui/colors/green'
@@ -7,8 +9,9 @@ import indigo from 'material-ui/colors/indigo'
 
 export default createMuiTheme({
   palette: createPalette({
+    // palette: {
     primary: blue,
-    accent: indigo
+    secondary: indigo
     // error: red
   }),
   scratch: {
