@@ -3,7 +3,7 @@ import React from 'react'
 import Paper from 'material-ui/Paper'
 import DataTable from 'material-ui-data-table'
 
-const dbg = debug('app:partners:results')
+const dbg = debug('app:people:results')
 
 const columns = [
   {id: 'ssn'},

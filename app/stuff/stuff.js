@@ -17,7 +17,7 @@ const styles = theme => ({
   },
   stars: {
     display: 'flex',
-    'justify-content': 'center'
+    justifyContent: 'center'
   }
 })
 
@@ -39,10 +39,6 @@ class home extends Component {
   componentWillMount() {
     dbg('cwm')
     this.props.setTitle('Stuff')
-  }
-
-  componentWillUnmount() {
-    dbg('cwu')
   }
 }
 

@@ -11,7 +11,7 @@ class snackbar extends Component {
     return (
       <Snackbar
         open={layout.snackbar.open}
-        autoHideDuration={5e3}
+        autoHideDuration={10000}
         message={layout.snackbar.message}
         onRequestClose={this.handleRequestClose}
       />

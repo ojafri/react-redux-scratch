@@ -18,14 +18,14 @@ const auth = {}
 export function configure(config) {
   dbg('configure: config=%o', config)
   assert(config, 'config required')
-  const {postAuthLocation, impl, onNotAuthorized} = config
-  const picked = _.pick(config, ['rules', 'notAuthorizedLocation', 'onNotAuthorized'])
+  const {postAuthLocation, impl, onFailure} = config
+  const picked = _.pick(config, ['rules', 'notAuthorizedLocation', 'onFailure'])
 
   Object.assign(auth, {
     ...getAuthRedux({
       postAuthLocation,
       impl,
-      onNotAuthorized
+      onFailure
     }),
     ...picked
   })

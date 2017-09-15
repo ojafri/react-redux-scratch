@@ -33,7 +33,7 @@ class topNav extends Component {
   handleLoginClicked = () => {
     dbg('handle-login-clicked: props=%o', this.props)
     const {login, logout, history, session} = this.props
-    session.token ? logout() : login({history})
+    session.token ? logout({history}) : login({history})
   }
 
   render() {
@@ -72,14 +72,6 @@ class topNav extends Component {
 
   handleDrawerToggle = () => {
     this.setState({drawerOpen: !this.state.drawerOpen})
-  }
-
-  componentWillMount() {
-    dbg('cwm')
-  }
-
-  componentWillUnmount() {
-    dbg('cwu')
   }
 }
 

@@ -3,6 +3,7 @@ import React, {Component} from 'react'
 import {withStyles} from 'material-ui/styles'
 import Paper from 'material-ui/Paper'
 import Typography from 'material-ui/Typography'
+import {AuthContainer} from '../auth'
 
 const dbg = debug('app:such')
 
@@ -15,7 +16,7 @@ const styles = theme => ({
   },
   stars: {
     display: 'flex',
-    'justify-content': 'center'
+    justifyContent: 'center'
   }
 })
 
@@ -24,21 +25,19 @@ class such extends Component {
     dbg('render: props=%o', this.props)
     const {classes} = this.props
     return (
-      <Paper className={classes.root} elevation={5}>
-        <Typography align="center" type="headline" gutterBottom>
-          Such
-        </Typography>
-      </Paper>
+      <AuthContainer>
+        <Paper className={classes.root} elevation={5}>
+          <Typography align="center" type="headline" gutterBottom>
+            Such
+          </Typography>
+        </Paper>
+      </AuthContainer>
     )
   }
 
   componentWillMount() {
     dbg('cwm')
     this.props.setTitle('Such')
-  }
-
-  componentWillUnmount() {
-    dbg('cwu')
   }
 }
 

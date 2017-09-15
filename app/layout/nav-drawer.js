@@ -51,22 +51,26 @@ class NavDrawer extends Component {
               </ListItem>
             </NavLink>
           </IfAuthorizedContainer>
-          <NavLink to="/such">
-            <ListItem button>
-              <ListItemIcon>
-                <TrainIcon />
-              </ListItemIcon>
-              <ListItemText primary="Such" />
-            </ListItem>
-          </NavLink>
-          <NavLink to="/nonsense">
-            <ListItem button>
-              <ListItemIcon>
-                <AutoIcon />
-              </ListItemIcon>
-              <ListItemText primary="Nonsense" />
-            </ListItem>
-          </NavLink>
+          <IfAuthorizedContainer path="to">
+            <NavLink to="/such">
+              <ListItem button>
+                <ListItemIcon>
+                  <TrainIcon />
+                </ListItemIcon>
+                <ListItemText primary="Such" />
+              </ListItem>
+            </NavLink>
+          </IfAuthorizedContainer>
+          <IfAuthorizedContainer path="to">
+            <NavLink to="/nonsense">
+              <ListItem button>
+                <ListItemIcon>
+                  <AutoIcon />
+                </ListItemIcon>
+                <ListItemText primary="Nonsense" />
+              </ListItem>
+            </NavLink>
+          </IfAuthorizedContainer>
           <NavLink to="/people">
             <ListItem button>
               <ListItemIcon>

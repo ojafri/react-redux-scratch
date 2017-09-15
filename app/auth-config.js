@@ -4,6 +4,7 @@ import debug from 'debug'
 //   getHelloAuth as getAuth,
 //   getOidcHelloProvider as getProvider
 // } from 'react-redux-auth'
+import config from 'config'
 import {configure} from './auth'
 import getAuth from './auth/get-auth-hello'
 import getProvider from './auth/hello/keycloak'
@@ -16,8 +17,10 @@ const dbg = debug('app:auth-config')
 //
 configure({
   impl: getAuth({
+    url: config.auth.url,
+    domain: 'realm-1',
     clientId: 'client-1',
-    returnTo: 'http://localhost:8080',
+    redirectUri: 'http://localhost:8080',
     getProvider
   }),
   // roles can be a string, an array (or'd), or a function for custom
@@ -25,10 +28,14 @@ configure({
     {
       path: '/stuff',
       roles: roles => {
-        return roles.includes('admin')
+        return roles.includes('group-1')
       }
     },
-    {path: '/nonsense', roles: 'nonsense'}
+    {
+      path: '/such',
+      roles: ['group-1']
+    },
+    {path: '/nonsense', roles: 'group-1'}
   ],
   postAuthLocation: ({token}) => {
     // can customize with function (e.g. based on roles)
@@ -36,8 +43,13 @@ configure({
     return 'stuff'
   },
   notAuthorizedLocation: '/',
-  onNotAuthorized: ({path, dispatch}) => {
-    dbg('on-not-authorized: unable to visit route=%o, dispatch=%o', path, dispatch)
-    dispatch(openSnackbar(`not authorized: unable to visit route ${path}`))
-  }
+  onFailure: openSnackbar
+  // onError: ({path, dispatch}) => {
+  //   dbg('on-error: route=%o, dispatch=%o', path, dispatch)
+  //   dispatch(openSnackbar(`not authorized: unable to visit route ${path}`))
+  // },
+  // onNotAuthorized: ({path, dispatch}) => {
+  //   dbg('on-not-authorized: unable to visit route=%o, dispatch=%o', path, dispatch)
+  //   dispatch(openSnackbar(`not authorized: unable to visit route ${path}`))
+  // }
 })
